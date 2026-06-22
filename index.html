@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Damla Zamanı</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <span class="icon">💧</span>
+      <h1>Damla Zamanı</h1>
+    </header>
+
+    <div class="toggle-card">
+      <p id="statusText">Hatırlatmalar Aktif</p>
+      <label class="switch">
+        <input type="checkbox" id="toggleSwitch" checked>
+        <span class="slider"></span>
+      </label>
+    </div>
+
+    <div class="schedule-card">
+      <h2>Bugünün Saatleri</h2>
+      <ul id="scheduleList">
+        <li>🌅 09:00 — Sabah</li>
+        <li>☀️ 13:00 — Öğle</li>
+        <li>🌤️ 17:00 — İkindi</li>
+        <li>🌙 21:00 — Akşam</li>
+      </ul>
+    </div>
+    <div class="tema-card">
+  <h2>Tema</h2>
+  <div class="tema-butonlar">
+    <button class="tema-btn yesil aktif" data-tema="yesil"></button>
+    <button class="tema-btn mavi" data-tema="mavi"></button>
+    <button class="tema-btn mor" data-tema="mor"></button>
+    <button class="tema-btn kirmizi" data-tema="kirmizi"></button>
+  </div>
+  <button id="testBtn">🔔 Test Bildirimi Gönder</button>
+</div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
