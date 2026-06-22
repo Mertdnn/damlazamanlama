@@ -15,7 +15,11 @@ async function fcmTokenAl() {
     });
 
     const messaging = getMessaging(app);
-    const token = await getToken(messaging, { vapidKey: VAPID_KEY });
+    const registration = await navigator.serviceWorker.register('/damlazamanlama/firebase-messaging-sw.js');
+    const token = await getToken(messaging, { 
+      vapidKey: VAPID_KEY,
+      serviceWorkerRegistration: registration
+    });
     
     if (token) {
       console.log('FCM Token:', token);
@@ -31,7 +35,6 @@ fcmTokenAl();
 const toggleSwitch = document.getElementById('toggleSwitch');
 const statusText = document.getElementById('statusText');
 
-// Kaydedilmiş durumu yükle
 const savedState = localStorage.getItem('active');
 if (savedState === 'false') {
   toggleSwitch.checked = false;
@@ -39,7 +42,6 @@ if (savedState === 'false') {
   statusText.style.color = '#999';
 }
 
-// Toggle değişince
 toggleSwitch.addEventListener('change', () => {
   if (toggleSwitch.checked) {
     statusText.textContent = 'Hatırlatmalar Aktif';
@@ -53,7 +55,6 @@ toggleSwitch.addEventListener('change', () => {
   }
 });
 
-// Bildirim izni iste
 function bildirimIzniIste() {
   if ('Notification' in window) {
     Notification.requestPermission().then(permission => {
@@ -66,14 +67,12 @@ function bildirimIzniIste() {
 
 bildirimIzniIste();
 
-// Service Worker kaydet
 if ('serviceWorker' in navigator) {
   navigator.serviceWorker.register('/damlazamanlama/sw.js')
     .then(() => console.log('Service Worker kaydedildi'))
     .catch(err => console.log('Hata:', err));
 }
 
-// Tema renkleri
 const temalar = {
   yesil:   { ana: '#3cb371', acik: '#f0f7f0', koyu: '#2d7a4f' },
   mavi:    { ana: '#4a90d9', acik: '#f0f4ff', koyu: '#2c5f8a' },
@@ -105,7 +104,6 @@ document.querySelectorAll('.tema-btn').forEach(btn => {
   });
 });
 
-// Test butonu
 document.getElementById('testBtn').addEventListener('click', () => {
   if (Notification.permission === 'granted') {
     navigator.serviceWorker.ready.then(sw => {
