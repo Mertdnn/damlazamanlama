@@ -1,7 +1,7 @@
 const BILDIRIMLER = [
   {
     saat: 0,
-    dakika: 50,
+    dakika: 52,
     baslik: 'Damla Zamanı 💧',
     mesaj: 'Günaydın, damlanı damlatmayı unutma sakın ayrıca uyandırdıysam da üzgünüm...'
   },
