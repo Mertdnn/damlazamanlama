@@ -1,7 +1,7 @@
 const BILDIRIMLER = [
   {
-    saat: 00:43,
-    dakika: 0,
+    saat: 0,
+    dakika: 50,
     baslik: 'Damla Zamanı 💧',
     mesaj: 'Günaydın, damlanı damlatmayı unutma sakın ayrıca uyandırdıysam da üzgünüm...'
   },
@@ -25,7 +25,6 @@ const BILDIRIMLER = [
   }
 ];
 
-// Her dakika kontrol et
 setInterval(() => {
   const simdi = new Date();
   const saat = simdi.getHours();
@@ -40,9 +39,8 @@ setInterval(() => {
       });
     }
   });
-}, 60000); // 60 saniyede bir kontrol
+}, 60000);
 
-// Service Worker kurulumu
 self.addEventListener('install', event => {
   self.skipWaiting();
 });
